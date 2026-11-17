@@ -74,6 +74,21 @@ function buildWidgetAutoBlocks(main) {
 }
 
 /**
+ * Turns a YouTube link that is alone in a paragraph of default content into a video block.
+ * Links inside sentences or inside other blocks are left alone (blocks cannot be nested).
+ * Runs before decoration: sections are `main > div`, blocks are `main > div > div`.
+ * @param {Element} main The container element
+ */
+function buildVideoAutoBlocks(main) {
+  main.querySelectorAll('a[href*="youtube.com/watch"], a[href*="youtu.be/"]').forEach((link) => {
+    const p = link.closest('p');
+    if (!p || p.parentElement?.parentElement !== main) return;
+    if (p.querySelectorAll('a').length !== 1 || p.textContent.trim() !== link.textContent.trim()) return;
+    p.replaceWith(buildBlock('video', [['URL', link.cloneNode(true)]]));
+  });
+}
+
+/**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
  */
@@ -97,6 +112,7 @@ function buildAutoBlocks(main) {
       });
     }
     buildWidgetAutoBlocks(main);
+    buildVideoAutoBlocks(main);
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);
