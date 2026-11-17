@@ -1,0 +1,64 @@
+/* mobile first: image on top, text below */
+.teaser {
+  display: grid;
+  grid-template-columns: 1fr;
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: var(--light-color);
+  color: var(--text-color);
+}
+
+.teaser .teaser-image picture,
+.teaser .teaser-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.teaser .teaser-image img {
+  aspect-ratio: 4 / 3;
+}
+
+.teaser .teaser-content {
+  padding: 24px;
+}
+
+.teaser .teaser-content > :first-child {
+  margin-top: 0;
+}
+
+.teaser .teaser-eyebrow {
+  margin-bottom: 8px;
+  font-size: var(--body-font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.teaser .teaser-content a:focus-visible {
+  outline: 3px solid currentcolor;
+  outline-offset: 3px;
+}
+
+/* dark variant */
+.teaser.dark {
+  background-color: var(--text-color);
+  color: var(--background-color);
+}
+
+.teaser.dark h2,
+.teaser.dark a:any-link {
+  color: var(--background-color);
+}
+
+/* from 900px: image and text side by side */
+@media (width >= 900px) {
+  .teaser {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+
+  .teaser .teaser-content {
+    padding: 40px;
+  }
+}
