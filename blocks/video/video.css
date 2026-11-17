@@ -1,0 +1,68 @@
+/* reserve a 16:9 box so nothing moves when the player arrives */
+.video .video-frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: var(--text-color);
+}
+
+.video .video-frame iframe,
+.video .video-frame > picture,
+.video .video-play {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.video .video-frame picture,
+.video .video-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video .video-play {
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  cursor: pointer;
+}
+
+/* play icon: dark circle with a white triangle */
+.video .video-play::before,
+.video .video-play::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.video .video-play::before {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background-color: rgb(0 0 0 / 65%);
+  transform: translate(-50%, -50%);
+}
+
+.video .video-play::after {
+  border-style: solid;
+  border-width: 14px 0 14px 24px;
+  border-color: transparent transparent transparent white;
+  transform: translate(-35%, -50%);
+}
+
+.video .video-play:hover::before,
+.video .video-play:focus-visible::before {
+  background-color: rgb(0 0 0 / 85%);
+}
+
+.video .video-play:focus-visible {
+  outline: 4px solid var(--link-color);
+  outline-offset: -4px;
+}
