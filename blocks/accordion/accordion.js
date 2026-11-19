@@ -19,7 +19,8 @@ export default function decorate(block) {
     details.className = 'accordion-item';
     details.append(summary);
 
-    if (body) {
+    // an empty answer cell adds nothing: leave it out instead of showing an empty panel
+    if (body && (body.textContent.trim() || body.querySelector('picture, img'))) {
       body.className = 'accordion-item-body';
       details.append(body);
     }

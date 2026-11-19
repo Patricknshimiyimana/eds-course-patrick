@@ -14,6 +14,11 @@
   list-style: none;
 }
 
+/* the question text sits in a <p>: drop its margin so the label stays compact */
+.accordion .accordion-item-label p {
+  margin: 0;
+}
+
 /* hide the browser's default marker (Safari) */
 .accordion .accordion-item-label::-webkit-details-marker {
   display: none;
