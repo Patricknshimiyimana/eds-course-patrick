@@ -1,3 +1,5 @@
+import { fetchPlaceholders } from '../../scripts/i18n.js';
+
 /**
  * Offices block: shows one card per row of a sheet.
  * Content model: one cell with a link to the sheet, e.g. /data/offices.json
@@ -27,6 +29,9 @@ export default async function decorate(block) {
     return;
   }
 
+  const placeholders = await fetchPlaceholders();
+  const phoneLabel = placeholders.phone || 'Phone';
+
   const ul = document.createElement('ul');
   data.forEach(({ City, Address, Phone }) => {
     if (!City) return;
@@ -45,6 +50,10 @@ export default async function decorate(block) {
 
     if (Phone) {
       const p = document.createElement('p');
+      const label = document.createElement('span');
+      label.className = 'offices-phone-label';
+      label.textContent = `${phoneLabel}: `;
+      p.append(label);
       const phone = document.createElement('a');
       phone.className = 'offices-phone';
       phone.href = `tel:${Phone.replace(/[^\d+]/g, '')}`;
