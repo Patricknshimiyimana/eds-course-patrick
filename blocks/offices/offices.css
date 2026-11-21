@@ -1,0 +1,29 @@
+.offices ul {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.offices li {
+  padding: 16px 24px;
+  border: 1px solid var(--light-color);
+  border-radius: 8px;
+  background-color: var(--light-color);
+}
+
+.offices h3 {
+  margin: 0 0 8px;
+}
+
+.offices p {
+  margin: 0;
+}
+
+@media (width >= 900px) {
+  .offices ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
