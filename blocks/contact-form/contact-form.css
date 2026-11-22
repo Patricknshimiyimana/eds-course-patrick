@@ -1,0 +1,91 @@
+.contact-form form {
+  display: grid;
+  gap: 16px;
+  max-width: 640px;
+}
+
+.contact-form .contact-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.contact-form label {
+  font-weight: 600;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--dark-color);
+  border-radius: 4px;
+  font: inherit;
+  font-size: var(--body-font-size-s);
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
+.contact-form [aria-invalid='true'] {
+  border-color: #b00020;
+  outline-color: #b00020;
+}
+
+.contact-form .contact-form-checkbox {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  column-gap: 8px;
+}
+
+.contact-form .contact-form-checkbox input {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+}
+
+.contact-form .contact-form-checkbox label {
+  font-weight: normal;
+}
+
+.contact-form .contact-form-error {
+  margin: 0;
+  color: #b00020;
+  font-size: var(--body-font-size-xs);
+}
+
+.contact-form .contact-form-error:empty {
+  display: none;
+}
+
+.contact-form .contact-form-checkbox .contact-form-error {
+  grid-column: 1 / -1;
+}
+
+/* honeypot: off-screen, not display: none */
+.contact-form .contact-form-hp {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.contact-form .contact-form-actions button {
+  margin: 0;
+}
+
+.contact-form .contact-form-status {
+  margin: 16px 0 0;
+  font-weight: 600;
+}
+
+.contact-form .contact-form-success {
+  color: #1b5e20;
+}
+
+.contact-form .contact-form-failure {
+  color: #b00020;
+}
