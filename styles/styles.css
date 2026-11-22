@@ -70,7 +70,7 @@
   }
 }
 
-html body {
+body {
   display: none;
   margin: 0;
   background-color: var(--background-color);
@@ -322,9 +322,4 @@ main .section.highlight {
   background-color: var(--light-color);
   margin: 0;
   padding: 40px 0;
-}
-
-/* deliberate mistake for the module 15 rollback lab */
-html body {
-  background: red;
 }
