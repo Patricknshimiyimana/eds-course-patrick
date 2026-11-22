@@ -148,6 +148,16 @@ header nav .nav-brand img {
   height: auto;
 }
 
+/* tools list (placed before the sections rules for stylelint) */
+header nav .nav-tools ul {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
 /* sections */
 header nav .nav-sections {
   grid-area: sections;
@@ -270,4 +280,15 @@ header nav .nav-sections .nav-drop > button[aria-expanded='false'] + ul {
 /* tools */
 header nav .nav-tools {
   grid-area: tools;
+}
+
+header nav .nav-sections a[aria-current='page'] {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+header nav .nav-tools a[aria-current='true'] {
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 6px;
 }
