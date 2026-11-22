@@ -3,7 +3,7 @@ import { fetchPlaceholders } from '../../scripts/i18n.js';
 /**
  * Offices block: shows one card per row of a sheet.
  * Content model: one cell with a link to the sheet, e.g. /data/offices.json
- * Sheet columns: City, Address, Telephone (older sheets: Phone).
+ * Sheet columns: City, Address, Telephone.
  * @param {Element} block The offices block element
  */
 export default async function decorate(block) {
@@ -35,8 +35,8 @@ export default async function decorate(block) {
   const ul = document.createElement('ul');
   data.forEach((office) => {
     const { City, Address } = office;
-    // expand: read the new column name and fall back to the old one
-    const Phone = office.Telephone ?? office.Phone;
+    // contract: all sheets use Telephone now
+    const Phone = office.Telephone;
     if (!City) return;
     const li = document.createElement('li');
 
